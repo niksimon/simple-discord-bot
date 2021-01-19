@@ -219,21 +219,8 @@ bot.on('message', message => {
             }
             else if(command === "chance") {
                 var sliced = msg.slice(15, msg.length);
-                //console.log(msg.slice(15, msg.length));
 
-                if(sliced === "count") {
-                    var counter = mainDb("get").catch(console.error);
-
-                    counter.then(function(result) {
-                        message.channel.send( { embed:
-                            {
-                                color: hexToOLE(randomHex()),
-                                title: "Chance command count: " + result
-                            }
-                        });
-                    })
-                } else {
-                    message.channel.send( { embed:
+                message.channel.send( { embed:
                         {
                             color: hexToOLE(randomHex()),
                             title: "Chance " + sliced,
@@ -241,8 +228,6 @@ bot.on('message', message => {
                         }
                     });
 
-                    mainDb("update").catch(console.error);
-                }
             }
 
             // unknown command
